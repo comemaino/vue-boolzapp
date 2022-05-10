@@ -79,7 +79,7 @@
 
             <div class="user-wrapper flex" v-for="(item, index) in contacts">
               <div class="avatar">
-                <img :src="'img/avatar' + 'contacts.avatar' + '.jpg'" alt="" />
+                <img :src="'img/avatar' + [contacts.avatar] + '.jpg'" alt="" />
               </div>
               <div class="user-details">
                 <h5>{{contacts[i].name}}</h5>
@@ -89,6 +89,7 @@
           </div>
         </div>
         <!-- /LEFT COL -->
+        <!-- RIGHT COL -->
         <div class="col right-col">
           <div class="row flex">
             <div class="user-wrapper flex">
@@ -106,7 +107,22 @@
               <i class="fas fa-ellipsis-v"></i>
             </div>
           </div>
+          <div class="chat row flex">
+            <p class="sent message">ciao ciao</p>
+            <p class="received message">miao miao</p>
+          </div>
+          <div class="message-input row flex">
+            <i class="fas fa-smile"></i>
+            <input
+              class="inline-b"
+              type="text"
+              placeholder="Scrivi un messaggio"
+            />
+            <i class="fas fa-microphone"></i>
+          </div>
         </div>
+
+        <!-- /RIGHT COL -->
       </div>
     </main>
     <!-- /MAIN -->

@@ -116,3 +116,30 @@ input {
 .contacts {
   overflow: scroll;
 }
+
+.chat {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2rem;
+  height: calc(100% - 140px);
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.sent {
+  background-color: lightgreen;
+  align-self: flex-end;
+}
+
+.received {
+  background-color: #fff;
+  align-self: flex-start;
+}
+
+.message-input {
+  height: 70px;
+  align-self: flex-end;
+}
