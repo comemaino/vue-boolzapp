@@ -172,4 +172,9 @@ const app = new Vue({
     ],
     currentContact: 0,
   },
+  methods: {
+    showChat: function (index) {
+      this.currentContact = index;
+    },
+  },
 });
