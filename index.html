@@ -29,102 +29,123 @@
     <!-- APPLICAZIONE VUE -->
     <div id="root"></div>
     <!-- MAIN -->
-    <main>
-      <div class="container flex">
-        <!-- LEFT COL -->
-        <!-- TOP ROW -->
-        <div class="col left-col">
-          <div class="row flex">
-            <div class="user-wrapper flex">
-              <div class="avatar">
-                <img src="img/avatar_io.jpg" alt="user" />
-              </div>
-              <h5>Sofia</h5>
-            </div>
-            <div class="icons-wrapper">
-              <i class="fas fa-circle-notch"></i>
-              <i class="fas fa-comment-alt"></i>
-              <i class="fas fa-ellipsis-v"></i>
-            </div>
-          </div>
-          <!-- /TOP ROW -->
 
-          <div class="row flex alert-bar">
-            <div class="icon-wrapper">
-              <i class="fas fa-bell-slash"></i>
+    <div class="container flex">
+      <!-- LEFT COL -->
+      <!-- TOP ROW -->
+      <div class="col left-col flex">
+        <div class="row flex">
+          <div class="user-wrapper flex">
+            <div class="avatar">
+              <img src="img/avatar_io.jpg" alt="user" />
             </div>
-            <div class="alert-details">
-              <h5>Ricevi notifiche di nuovi messaggi</h5>
-              <p>Attiva notifiche desktop</p>
-            </div>
+            <h5>Sofia</h5>
           </div>
-          <div class="row search-bar flex">
-            <div class="icons-wrapper inline-b">
-              <i class="fas fa-search"></i>
-            </div>
-            <input type="text" placeholder="Cerca o inizia una nuova chat" />
-          </div>
-          <div class="contacts">
-            <div class="contact">
-              <div class="user-wrapper flex">
-                <div class="avatar">
-                  <img src="img/avatar_2.jpg" alt="" />
-                </div>
-                <div class="user-details">
-                  <h5>Paolo</h5>
-                  <p>Ultimo messaggio inviato</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="user-wrapper flex" v-for="(item, index) in contacts">
-              <div class="avatar">
-                <img :src="'img/avatar' + [contacts.avatar] + '.jpg'" alt="" />
-              </div>
-              <div class="user-details">
-                <h5>{{contacts[i].name}}</h5>
-                <p>Ultimo messaggio inviato</p>
-              </div>
-            </div>
+          <div class="icons-wrapper">
+            <i class="fas fa-circle-notch"></i>
+            <i class="fas fa-comment-alt"></i>
+            <i class="fas fa-ellipsis-v"></i>
           </div>
         </div>
-        <!-- /LEFT COL -->
-        <!-- RIGHT COL -->
-        <div class="col right-col">
-          <div class="row flex">
-            <div class="user-wrapper flex">
-              <div class="avatar">
-                <img src="img/avatar_1.jpg" alt="user" />
-              </div>
-              <div class="user-details">
-                <h5>Marco</h5>
-                <p>Ultimo accesso alle ore 15:00</p>
-              </div>
-            </div>
-            <div class="icons-wrapper">
-              <i class="fas fa-search"></i>
-              <i class="fas fa-paperclip"></i>
-              <i class="fas fa-ellipsis-v"></i>
-            </div>
+        <!-- /TOP ROW -->
+        <!-- ALERT BAR -->
+        <div class="row flex alert-bar">
+          <div class="icon-wrapper">
+            <i class="fas fa-bell-slash"></i>
           </div>
-          <div class="chat row flex">
-            <p class="sent message">ciao ciao</p>
-            <p class="received message">miao miao</p>
-          </div>
-          <div class="message-input row flex">
-            <i class="fas fa-smile"></i>
-            <input
-              class="inline-b"
-              type="text"
-              placeholder="Scrivi un messaggio"
-            />
-            <i class="fas fa-microphone"></i>
+          <div class="alert-details">
+            <h5>Ricevi notifiche di nuovi messaggi</h5>
+            <p>Attiva notifiche desktop</p>
           </div>
         </div>
+        <!-- /ALERT BAR -->
+        <!-- SEARCH BAR -->
+        <div class="row search-bar flex">
+          <label for="search">
+            <i class="fas fa-search"></i>
+          </label>
+          <input
+            type="text"
+            id="search"
+            placeholder="Cerca o inizia una nuova chat"
+          />
+        </div>
+        <!-- /SEARCH BAR -->
+        <!-- CONTACTS -->
+        <div class="contacts">
+          <div class="contact flex">
+            <div class="avatar">
+              <img src="img/avatar_2.jpg" alt="" />
+            </div>
+            <div class="user-details">
+              <h5>Paolo</h5>
+              <p>Ultimo messaggio inviato</p>
+            </div>
+            <p class="time">12:00</p>
+          </div>
 
-        <!-- /RIGHT COL -->
+          <div class="contact flex" v-for="(element, index) in contacts">
+            <div class="avatar">
+              <img :src="'img/avatar' + element.avatar + '.jpg'" alt="" />
+            </div>
+            <div class="user-details">
+              <h5>contacts[currentContact].name</h5>
+              <p>Ultimo messaggio inviato</p>
+            </div>
+            <p class="time">12:00</p>
+          </div>
+        </div>
+        <!-- /CONTACTS -->
       </div>
-    </main>
+      <!-- /LEFT COL -->
+      <!-- RIGHT COL -->
+      <div class="col right-col">
+        <!-- TOP ROW -->
+        <div class="row flex">
+          <div class="user-wrapper flex">
+            <div class="avatar">
+              <img src="img/avatar_1.jpg" alt="user" />
+            </div>
+            <div class="user-details">
+              <h5>Marco</h5>
+              <p>Ultimo accesso alle ore 15:00</p>
+            </div>
+          </div>
+          <div class="icons-wrapper">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-paperclip"></i>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+        </div>
+        <!-- /TOP ROW -->
+        <!-- CHAT -->
+        <div class="chat row flex">
+          <div class="sent message">
+            <p class="content">ciao ciao</p>
+            <p class="time">05:00</p>
+          </div>
+          <div class="received message">
+            <p class="content">ciao ciao</p>
+            <p class="time">05:01</p>
+          </div>
+        </div>
+        <!-- /CHAT -->
+        <!-- MESSAGE INPUT -->
+        <div class="message-input row flex">
+          <i class="far fa-smile"></i>
+          <input
+            class="inline-b"
+            type="text"
+            placeholder="Scrivi un messaggio"
+          />
+          <i class="fas fa-microphone"></i>
+        </div>
+        <!-- /MESSAGE INPUT -->
+      </div>
+
+      <!-- /RIGHT COL -->
+    </div>
+
     <!-- /MAIN -->
     <!-- SCRIPT -->
     <script src="js/script.js"></script>

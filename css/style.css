@@ -3,10 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* COOMON */
+/* COMMON */
 body {
+  width: 100%;
+  height: 100vh;
+  font-size: 100%;
   font-family: "Lato", sans-serif;
-  background-color: #2ab;
+  background: linear-gradient(
+    to bottom,
+    #0a9 0vh,
+    #0a9 15vh,
+    #ddd 15vh,
+    #ccc 100vh
+  );
+  overflow: hidden;
 }
 
 img {
@@ -15,7 +25,7 @@ img {
 
 i {
   margin: 0.5rem;
-  color: #444;
+  color: #aaa;
 }
 
 p {
@@ -24,8 +34,12 @@ p {
 }
 
 input {
+  margin: 0.5rem;
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
   width: 100%;
-  height: 70%;
+  height: 60%;
 }
 /* UTILITY */
 .flex {
@@ -35,31 +49,40 @@ input {
 .v-middle {
   vertical-align: middle;
 }
+
 .inline-b {
   display: inline-block;
 }
+
 .row {
-  justify-content: space-between;
   border: 1px solid green;
+  padding: 0 0.5rem;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .container {
   margin: 2rem auto;
   border: 1px solid #000;
   height: calc(100vh - 4rem);
   width: 90%;
-  background-color: #ddd;
+  min-width: 950px;
+  background-color: #eee;
 }
 
 .col {
   border: 1px solid #f00;
   height: 100%;
+  flex-direction: column;
 }
 
 .left-col {
+  height: 100%;
   width: 30%;
 }
 
 .right-col {
+  height: 100%;
   width: 70%;
 }
 
@@ -67,6 +90,8 @@ input {
   height: 70px;
   align-items: center;
   border: 1px solid blue;
+
+  justify-content: space-around;
 }
 
 .avatar {
@@ -117,16 +142,32 @@ input {
   overflow: scroll;
 }
 
+.contact {
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time {
+  font-size: 0.6rem;
+  color: #666;
+}
+
 .chat {
-  flex-direction: column;
-  justify-content: flex-start;
   padding: 2rem;
   height: calc(100% - 140px);
+  background-image: url(../img/mine.jpg);
+  overflow: scroll;
+
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .message {
+  border-radius: 0.5rem;
   padding: 1rem;
-  border-radius: 1rem;
+  min-width: 30%;
+  max-width: 60%;
 }
 
 .sent {
@@ -139,7 +180,11 @@ input {
   align-self: flex-start;
 }
 
+.message .time {
+  text-align: end;
+}
+
 .message-input {
   height: 70px;
-  align-self: flex-end;
+  background-color: #ddd;
 }
