@@ -99,12 +99,12 @@
             <div class="user-wrapper flex">
               <div class="avatar">
                 <img
-                  :src="'img/avatar' + contacts[currentContact].avatar + '.jpg'"
+                  :src="'img/avatar' + currentContactObj.avatar + '.jpg'"
                   alt="user"
                 />
               </div>
               <div class="user-details">
-                <h5>{{contacts[currentContact].name}}</h5>
+                <h5>{{currentContactObj.name}}</h5>
                 <p>Ultimo accesso alle ore 15:00</p>
               </div>
             </div>
@@ -117,22 +117,13 @@
           <!-- /TOP ROW -->
           <!-- CHAT -->
           <div class="chat row flex">
-            <div class="sent message">
-              <p class="content">ciao ciao</p>
-              <p class="time">05:00</p>
-            </div>
-            <div class="received message">
-              <p class="content">ciao ciao</p>
-              <p class="time">05:01</p>
-            </div>
-
             <div
               class="message"
               :class="singleMessage.status"
-              v-for="singleMessage in contacts[currentContact].messages"
+              v-for="singleMessage in currentContactObj.messages"
             >
               <p class="content">{{singleMessage.message}}</p>
-              <p class="time">{{singleMessage.date}}</p>
+              <p class="time">{{getTime(singleMessage.date)}}</p>
             </div>
           </div>
           <!-- /CHAT -->
@@ -140,9 +131,11 @@
           <div class="message-input row flex">
             <i class="far fa-smile"></i>
             <input
+              @keyup.enter="sendMessage"
               class="inline-b"
               type="text"
               placeholder="Scrivi un messaggio"
+              v-model="newMessage"
             />
             <i class="fas fa-microphone"></i>
           </div>
@@ -155,6 +148,8 @@
 
     <!-- /MAIN -->
     <!-- SCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.25/plugin/customParseFormat.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

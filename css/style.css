@@ -55,7 +55,6 @@ input {
 }
 
 .row {
-  border: 1px solid green;
   padding: 0 0.5rem;
   justify-content: space-between;
   align-items: center;
@@ -71,7 +70,6 @@ input {
 }
 
 .col {
-  border: 1px solid #f00;
   height: 100%;
   flex-direction: column;
 }
@@ -89,7 +87,6 @@ input {
 .user-wrapper {
   height: 70px;
   align-items: center;
-  border: 1px solid blue;
 
   justify-content: space-around;
 }

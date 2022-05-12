@@ -1,3 +1,5 @@
+dayjs.extend(window.dayjs_plugin_customParseFormat);
+
 Vue.config.devtools = true;
 
 const app = new Vue({
@@ -171,10 +173,43 @@ const app = new Vue({
       },
     ],
     currentContact: 0,
+    newMessage: "",
+  },
+  computed: {
+    currentContactObj() {
+      return this.contacts[this.currentContact];
+    },
   },
   methods: {
     showChat: function (index) {
       this.currentContact = index;
     },
+    sendMessage() {
+      const selectedContact = this.contacts[this.currentContact];
+      selectedContact.messages.push({
+        date: this.getCurrentTime(),
+        message: this.newMessage,
+        status: "sent",
+      });
+      this.newMessage = "";
+      setTimeout(this.receiveMessage, 1000);
+    },
+    receiveMessage() {
+      const selectedContact = this.contacts[this.currentContact];
+      selectedContact.messages.push({
+        date: this.getCurrentTime(),
+        message: "ok",
+        status: "received",
+      });
+    },
+    getCurrentTime() {
+      return dayjs().format("DD/MM/YYYY HH:mm:ss");
+    },
+    getTime(date) {
+      const dayjsDate = dayjs(date, "DD/MM/YYYY HH:mm:ss");
+      return dayjsDate.format("HH:mm");
+    },
   },
 });
+
+const date = dayjs("28/03/2020", "DD/MM/YYYY HH:mm:ss");
