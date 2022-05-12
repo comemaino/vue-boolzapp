@@ -174,6 +174,7 @@ const app = new Vue({
     ],
     currentContact: 0,
     newMessage: "",
+    search: "",
   },
   computed: {
     currentContactObj() {
@@ -184,6 +185,7 @@ const app = new Vue({
     showChat: function (index) {
       this.currentContact = index;
     },
+
     sendMessage() {
       const selectedContact = this.contacts[this.currentContact];
       selectedContact.messages.push({
@@ -194,6 +196,7 @@ const app = new Vue({
       this.newMessage = "";
       setTimeout(this.receiveMessage, 1000);
     },
+
     receiveMessage() {
       const selectedContact = this.contacts[this.currentContact];
       selectedContact.messages.push({
@@ -202,12 +205,28 @@ const app = new Vue({
         status: "received",
       });
     },
+
     getCurrentTime() {
       return dayjs().format("DD/MM/YYYY HH:mm:ss");
     },
+
     getTime(date) {
       const dayjsDate = dayjs(date, "DD/MM/YYYY HH:mm:ss");
       return dayjsDate.format("HH:mm");
+    },
+
+    filterContacts() {
+      console.log(this.search);
+      this.contacts.forEach((contact) => {
+        const formattedText = contact.name.toLowerCase();
+        console.log(this.contacts);
+        const formattedSearch = this.search.toLowerCase();
+        if (formattedText.includes(formattedSearch)) {
+          contact.visible = true;
+        } else {
+          contact.visible = false;
+        }
+      });
     },
   },
 });

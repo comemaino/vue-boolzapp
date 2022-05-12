@@ -68,6 +68,8 @@
               type="text"
               id="search"
               placeholder="Cerca o inizia una nuova chat"
+              v-model="search"
+              @keyup="filterContacts"
             />
           </div>
           <!-- /SEARCH BAR -->
@@ -76,7 +78,7 @@
             <div
               class="contact flex"
               v-for="(element, index) in contacts"
-              :class="{'active' : currentContact === index}"
+              :class="{'active' : currentContact === index, 'hidden' : element.visible === false}"
               @click="showChat(index)"
             >
               <div class="avatar">
